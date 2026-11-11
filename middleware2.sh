@@ -32,7 +32,7 @@ if [ "$AMPLITUDE_DEBUG_KEY" = "" ]; then
   exit 1
 fi;
 
-if [ "$SENTRY_DSN" = ""]; then
+if [ "$SENTRY_DSN" = "" ]; then
   echo "ERROR: sentry_dsn is empty"
   exit 1
 fi;
