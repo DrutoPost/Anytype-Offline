@@ -16,7 +16,6 @@ import com.anytypeio.anytype.core_utils.ui.BaseFragment
 import com.anytypeio.anytype.databinding.FragmentCreateObjectBinding
 import com.anytypeio.anytype.di.common.componentManager
 import com.anytypeio.anytype.presentation.objects.CreateObjectViewModel
-import com.anytypeio.anytype.ui.chats.ChatFragment
 import com.anytypeio.anytype.ui.sets.ObjectSetFragment
 import javax.inject.Inject
 
@@ -52,7 +51,7 @@ class CreateObjectFragment : BaseFragment<FragmentCreateObjectBinding>(R.layout.
                         }
                         ObjectType.Layout.CHAT, ObjectType.Layout.CHAT_DERIVED -> {
                             findNavController().navigate(
-                                R.id.chatScreen,
+                                R.id.homeScreen,
                                 ChatFragment.args(
                                     ctx = state.id,
                                     space = state.space

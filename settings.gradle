@@ -48,7 +48,6 @@ include ':app',
         ':core-ui',
         ':library-page-icon-picker-widget',
         ':library-emojifier',
-        ':sample',
         ':clipboard',
         ':analytics',
         ':protocol',
@@ -63,7 +62,6 @@ include ':crash-reporting'
 include ':localization'
 include ':payments'
 include ':gallery-experience'
-include ':feature-chats'
 include ':feature-discussions'
 include ':feature-all-content'
 include ':feature-date'

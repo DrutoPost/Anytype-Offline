@@ -182,7 +182,7 @@ class DateObjectFragment : BaseComposeFragment() {
 
                 DateObjectCommand.ExitToHomeOrChat -> {
                     runCatching {
-                        val result = findNavController().popBackStack(R.id.chatScreen, false)
+                        val result = false
                         if (!result) {
                             findNavController().popBackStack(R.id.homeScreen, false)
                         }

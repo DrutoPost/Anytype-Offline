@@ -37,7 +37,6 @@ private val FULL_WIDTH_DESTINATIONS = setOf(
 private val WALLPAPER_DESTINATIONS = setOf(
     R.id.homeScreen,
     R.id.homeScreenWidgets,
-    R.id.chatScreen
 )
 
 /**

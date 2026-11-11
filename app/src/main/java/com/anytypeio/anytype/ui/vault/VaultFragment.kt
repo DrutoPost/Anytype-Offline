@@ -40,7 +40,6 @@ import com.anytypeio.anytype.feature_vault.ui.SelectMembersContent
 import com.anytypeio.anytype.feature_vault.ui.SharedSpaceLimitModal
 import com.anytypeio.anytype.feature_vault.ui.VaultScreen
 import com.anytypeio.anytype.ui.base.navigation
-import com.anytypeio.anytype.ui.chats.ChatFragment
 import com.anytypeio.anytype.ui.gallery.GalleryInstallationFragment
 import com.anytypeio.anytype.ui.home.WidgetsScreenFragment
 import com.anytypeio.anytype.ui.multiplayer.LeaveSpaceWarning

@@ -54,11 +54,7 @@ import com.anytypeio.anytype.di.feature.TextBlockIconPickerModule
 import com.anytypeio.anytype.di.feature.ViewerFilterModule
 import com.anytypeio.anytype.di.feature.ViewerSortModule
 import com.anytypeio.anytype.di.feature.auth.DaggerDeletedAccountComponent
-import com.anytypeio.anytype.di.feature.chats.DaggerChatComponent
 import com.anytypeio.anytype.di.feature.discussions.DaggerDiscussionComponent
-import com.anytypeio.anytype.di.feature.chats.DaggerChatReactionComponent
-import com.anytypeio.anytype.di.feature.chats.DaggerSelectChatIconComponent
-import com.anytypeio.anytype.di.feature.chats.DaggerSelectChatReactionComponent
 import com.anytypeio.anytype.di.feature.cover.UnsplashModule
 import com.anytypeio.anytype.di.feature.gallery.DaggerGalleryInstallationComponent
 import com.anytypeio.anytype.di.feature.home.DaggerHomeScreenComponent
@@ -114,10 +110,7 @@ import com.anytypeio.anytype.di.feature.widgets.DaggerSelectWidgetSourceComponen
 import com.anytypeio.anytype.di.feature.widgets.DaggerSelectWidgetTypeComponent
 import com.anytypeio.anytype.di.main.MainComponent
 import com.anytypeio.anytype.feature_allcontent.presentation.AllContentViewModel
-import com.anytypeio.anytype.feature_chats.presentation.ChatReactionViewModel
-import com.anytypeio.anytype.feature_chats.presentation.ChatViewModel
 import com.anytypeio.anytype.feature_discussions.presentation.DiscussionViewModel
-import com.anytypeio.anytype.feature_chats.presentation.SelectChatReactionViewModel
 import com.anytypeio.anytype.feature_create_object.presentation.NewCreateObjectViewModel
 import com.anytypeio.anytype.feature_date.viewmodel.DateObjectVmParams
 import com.anytypeio.anytype.feature_object_type.ui.ObjectTypeVmParams
@@ -1120,14 +1113,6 @@ class ComponentManager(
                 .build()
         }
 
-    val chatComponent = ComponentMapWithParam { params: ChatViewModel.Params.Default ->
-        DaggerChatComponent
-            .builder()
-            .withDependencies(findComponentDependencies())
-            .withParams(params)
-            .build()
-    }
-
     val discussionComponent = ComponentMapWithParam { params: DiscussionViewModel.Params ->
         DaggerDiscussionComponent
             .builder()
@@ -1136,28 +1121,6 @@ class ComponentManager(
             .build()
     }
 
-    val selectChatReactionComponent = ComponentMapWithParam { params: SelectChatReactionViewModel.Params ->
-        DaggerSelectChatReactionComponent
-            .builder()
-            .withDependencies(findComponentDependencies())
-            .withParams(params)
-            .build()
-    }
-
-    val chatReactionComponent = ComponentMapWithParam { params: ChatReactionViewModel.Params ->
-        DaggerChatReactionComponent
-            .builder()
-            .withDependencies(findComponentDependencies())
-            .withParams(params)
-            .build()
-    }
-
-    val selectChatIconComponent = Component {
-        DaggerSelectChatIconComponent
-            .builder()
-            .withDependencies(findComponentDependencies())
-            .build()
-    }
 
     val vaultComponent = Component {
         DaggerVaultComponent

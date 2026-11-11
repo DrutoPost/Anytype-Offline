@@ -321,9 +321,6 @@
             android:id="@+id/actionOpenSpaceFromVault"
             app:destination="@id/homeScreen" />
         <action
-            android:id="@+id/actionOpenChatFromVault"
-            app:destination="@id/chatScreen" />
-        <action
             android:id="@+id/action_open_space_settings"
             app:destination="@id/spaceSettingsScreen" />
     </fragment>

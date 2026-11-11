@@ -22,7 +22,6 @@ import com.anytypeio.anytype.core_utils.intents.ActivityCustomTabsHelper
 import com.anytypeio.anytype.core_utils.ui.BaseBottomSheetComposeFragment
 import com.anytypeio.anytype.di.common.componentManager
 import com.anytypeio.anytype.presentation.publishtoweb.MySitesViewModel
-import com.anytypeio.anytype.ui.chats.ChatFragment
 import com.anytypeio.anytype.ui.editor.EditorFragment
 import com.anytypeio.anytype.ui.home.WidgetsScreenFragment
 import com.anytypeio.anytype.ui.settings.typography
@@ -113,7 +112,7 @@ class MySitesFragment : BaseBottomSheetComposeFragment() {
             )
         } else {
             nav.safeNavigateOrLog(
-                id = R.id.chatScreen,
+                id = R.id.homeScreen,
                 args = ChatFragment.args(space = space, ctx = chat)
             )
         }

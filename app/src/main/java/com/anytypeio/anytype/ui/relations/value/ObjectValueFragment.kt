@@ -32,7 +32,6 @@ import com.anytypeio.anytype.presentation.relations.value.`object`.ObjectValueVi
 import com.anytypeio.anytype.presentation.relations.value.`object`.ObjectValueViewModelFactory
 import com.anytypeio.anytype.presentation.relations.value.tagstatus.RelationContext
 import com.anytypeio.anytype.ui.base.navigation
-import com.anytypeio.anytype.ui.chats.ChatFragment
 import com.anytypeio.anytype.ui.date.DateObjectFragment
 import com.anytypeio.anytype.ui.editor.EditorFragment
 import com.anytypeio.anytype.ui.profile.ParticipantFragment
@@ -117,7 +116,7 @@ class ObjectValueFragment : BaseBottomSheetComposeFragment() {
                 }
                 is OpenObjectNavigation.OpenChat -> {
                     findNavController().navigate(
-                        R.id.chatScreen,
+                        R.id.homeScreen,
                         ChatFragment.args(
                             ctx = nav.target,
                             space = nav.space

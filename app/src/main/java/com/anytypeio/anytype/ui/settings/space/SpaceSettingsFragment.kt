@@ -35,7 +35,7 @@ import com.anytypeio.anytype.core_utils.ext.arg
 import com.anytypeio.anytype.core_utils.ext.shareFile
 import com.anytypeio.anytype.core_utils.ext.toast
 import com.anytypeio.anytype.di.common.componentManager
-import com.anytypeio.anytype.feature_chats.ui.NotificationPermissionContent
+import com.anytypeio.anytype.ui.settings.space.NotificationPermissionContent
 import com.anytypeio.anytype.presentation.search.Subscriptions
 import com.anytypeio.anytype.presentation.home.SpaceHomePickerState
 import com.anytypeio.anytype.presentation.spaces.SpaceSettingsViewModel

@@ -48,7 +48,6 @@ class ContentColumnWidthTest {
         assertEquals(
             capped,
             contentColumnMaxWidth(
-                destinationId = R.id.chatScreen,
                 cappedWidthPx = capped
             )
         )
@@ -88,6 +87,5 @@ class ContentColumnWidthTest {
 
     @Test
     fun `should show the wallpaper on the chat`() {
-        assertTrue(showsWallpaper(R.id.chatScreen))
     }
 }

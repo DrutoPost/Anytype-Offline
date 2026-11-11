@@ -85,7 +85,7 @@ android {
         testInstrumentationRunner config.test_runner
         buildConfigField "boolean", "USE_NEW_WINDOW_INSET_API", "true"
         buildConfigField "boolean", "USE_EDGE_TO_EDGE", "true"
-        buildConfigField "boolean", "SHOW_CHATS", "true"
+        buildConfigField "boolean", "SHOW_CHATS", "false"
         buildConfigField "boolean", "LOG_FROM_MW_LIBRARY", localProperties.getProperty("LOG_FROM_MW_LIBRARY", "false")
         buildConfigField "boolean", "LOG_MW_INTERACTION", localProperties.getProperty("LOG_MW_INTERACTION", "true")
         buildConfigField "boolean", "LOG_DASHBOARD_REDUCER", localProperties.getProperty("LOG_DASHBOARD_REDUCER", "false")
@@ -116,18 +116,12 @@ android {
 
     signingConfigs {
         release {
-            if (useReleaseKeystore) {
-                def keystorePropertiesFile = rootProject.file("signing.properties")
-                def keystoreProperties = new Properties()
-                keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
-                storeFile rootProject.file("scripts/release/app-release.jks")
-                keyAlias keystoreProperties['RELEASE_KEY_ALIAS']
-                keyPassword keystoreProperties['RELEASE_KEY_PASSWORD']
-                storePassword keystoreProperties['RELEASE_STORE_PASSWORD']
-                v1SigningEnabled true
-                v2SigningEnabled true
-            }
+            storeFile rootProject.file("app/drutopost-demo.jks")
+            keyAlias "drutopost"
+            keyPassword "drutopost123"
+            storePassword "drutopost123"
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
 
@@ -136,20 +130,16 @@ android {
             minifyEnabled true
             shrinkResources true
             debuggable false
-            buildConfigField "boolean", "SHOW_CHATS", "true"
+            buildConfigField "boolean", "SHOW_CHATS", "false"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "AMPLITUDE_KEY", apikeyProperties['amplitude.release'])
-            if (useReleaseKeystore) {
-                signingConfig signingConfigs.release
-            } else {
-                signingConfig signingConfigs.debug
-            }
+            signingConfig signingConfigs.release
         }
 
         debug {
             applicationIdSuffix ".dev"
             debuggable true
-            buildConfigField "boolean", "SHOW_CHATS", "true"
+            buildConfigField "boolean", "SHOW_CHATS", "false"
             buildConfigField("String", "AMPLITUDE_KEY", apikeyProperties['amplitude.debug'])
             //signingConfig signingConfigs.debug
             firebaseAppDistribution {
@@ -215,7 +205,6 @@ dependencies {
     implementation project(':feature-ui-settings')
     implementation project(':crash-reporting')
     implementation project(':payments')
-    implementation project(':feature-chats')
     implementation project(':feature-discussions')
     implementation project(':gallery-experience')
     implementation project(':feature-all-content')
