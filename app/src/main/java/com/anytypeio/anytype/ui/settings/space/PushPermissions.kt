@@ -1,4 +1,4 @@
-package com.anytypeio.anytype.feature_chats.ui
+package com.anytypeio.anytype.ui.settings.space
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,7 +22,7 @@ import com.anytypeio.anytype.core_ui.views.ButtonSecondary
 import com.anytypeio.anytype.core_ui.views.ButtonSize
 import com.anytypeio.anytype.core_ui.views.HeadlineHeading
 import com.anytypeio.anytype.core_ui.views.Title2
-import com.anytypeio.anytype.feature_chats.R
+import com.anytypeio.anytype.R
 
 @Composable
 fun NotificationPermissionContent(

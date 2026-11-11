@@ -15,13 +15,12 @@ object CrashReportingModule {
     @JvmStatic
     @Provides
     @Singleton
-    fun provideCrashReporter(
-        context: Context,
-        appInfo: AppInfo,
-        buildProvider: BuildProvider
-    ): CrashReporter = SentryCrashReporter(
-        context = context,
-        appInfo = appInfo,
-        withTimber = !buildProvider.isDebug()
-    )
+    fun provideCrashReporter(): CrashReporter = object : CrashReporter {
+        override fun init() {
+            // Disabled in offline mode
+        }
+        override fun setUser(userId: String) {
+            // Disabled in offline mode
+        }
+    }
 }

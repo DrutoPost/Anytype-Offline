@@ -5,7 +5,6 @@ import androidx.navigation.NavController
 import com.anytypeio.anytype.R
 import com.anytypeio.anytype.presentation.navigation.backstack.BackStackObjectEntry
 import com.anytypeio.anytype.presentation.navigation.backstack.NavigationBackStackInspector
-import com.anytypeio.anytype.ui.chats.ChatFragment
 import com.anytypeio.anytype.ui.date.DateObjectFragment
 import com.anytypeio.anytype.ui.editor.EditorFragment
 import com.anytypeio.anytype.ui.primitives.ObjectTypeFragment
@@ -70,7 +69,6 @@ class DefaultNavigationBackStackInspector @Inject constructor() : NavigationBack
         private val argKeysByDestination = mapOf(
             R.id.pageScreen to (EditorFragment.CTX_KEY to EditorFragment.SPACE_ID_KEY),
             R.id.objectSetScreen to (ObjectSetFragment.CONTEXT_ID_KEY to ObjectSetFragment.SPACE_ID_KEY),
-            R.id.chatScreen to (ChatFragment.CTX_KEY to ChatFragment.SPACE_KEY),
             R.id.objectTypeScreen to (ObjectTypeFragment.ARG_OBJECT_ID to ObjectTypeFragment.ARG_SPACE),
             R.id.dateObjectScreen to (DateObjectFragment.ARG_OBJECT_ID to DateObjectFragment.ARG_SPACE)
         )

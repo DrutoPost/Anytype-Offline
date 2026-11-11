@@ -41,11 +41,11 @@ class DefaultNetworkModeProvider(private val sharedPreferences: SharedPreference
         val useReserveMultiplexLib = sharedPreferences.getBoolean(USE_RESERVE_MULTIPLEX_LIBRARY_PREF, false)
 
         val networkMode =
-            when (sharedPreferences.getString(NETWORK_MODE_PREF, NETWORK_MODE_DEFAULT)) {
-                NETWORK_MODE_DEFAULT -> NetworkMode.DEFAULT
+            when (sharedPreferences.getString(NETWORK_MODE_PREF, NETWORK_MODE_LOCAL)) {
+                NETWORK_MODE_DEFAULT -> NetworkMode.LOCAL
                 NETWORK_MODE_LOCAL -> NetworkMode.LOCAL
                 NETWORK_MODE_CUSTOM -> NetworkMode.CUSTOM
-                else -> NetworkMode.DEFAULT
+                else -> NetworkMode.LOCAL
             }
         return if (networkMode == NetworkMode.CUSTOM) {
             val userFilePath = sharedPreferences.getString(

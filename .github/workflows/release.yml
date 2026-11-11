@@ -1,0 +1,69 @@
+name: Build Release APK and Create Release
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant Gradle execution permission
+        run: chmod +x gradlew
+
+      - name: Download anytype-heart middleware
+        run: |
+          mkdir -p libs
+          curl -L -o /tmp/android_lib.tar.gz "https://github.com/anyproto/anytype-heart/releases/download/v0.51.6/android_lib_v0.51.6.tar.gz"
+          tar -xzf /tmp/android_lib.tar.gz -C libs/ lib.aar
+          ./gradlew libs:publishToMavenLocal
+
+      - name: Create properties files
+        run: |
+          echo "gpr.usr=ci" > github.properties
+          echo "gpr.key=ci" >> github.properties
+          echo "amplitude.debug=\"ci\"" > apikeys.properties
+          echo "amplitude.release=\"ci\"" >> apikeys.properties
+          echo "sentry_dsn=\"ci\"" >> apikeys.properties
+
+      - name: Build Release APK
+        run: ./gradlew :app:assembleRelease
+
+      - name: Prepare Release APK
+        run: |
+          mkdir -p release-output
+          find app/build/outputs/apk/release/ -name "*.apk" -exec cp {} release-output/release.apk \;
+          ls -la release-output/
+
+      - name: Create GitHub Release and Upload APK
+        uses: softprops/action-gh-release@v2
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        with:
+          tag_name: release-${{ github.sha }}
+          name: Release ${{ github.sha }}
+          files: release-output/release.apk
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

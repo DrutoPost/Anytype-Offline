@@ -28,11 +28,7 @@ import com.anytypeio.anytype.di.feature.SpacePropertiesDependencies
 import com.anytypeio.anytype.di.feature.SpaceTypesDependencies
 import com.anytypeio.anytype.di.feature.SplashDependencies
 import com.anytypeio.anytype.di.feature.auth.DeletedAccountDependencies
-import com.anytypeio.anytype.di.feature.chats.ChatComponentDependencies
 import com.anytypeio.anytype.di.feature.discussions.DiscussionComponentDependencies
-import com.anytypeio.anytype.di.feature.chats.ChatReactionDependencies
-import com.anytypeio.anytype.di.feature.chats.SelectChatIconDependencies
-import com.anytypeio.anytype.di.feature.chats.SelectChatReactionDependencies
 import com.anytypeio.anytype.di.feature.gallery.GalleryInstallationComponentDependencies
 import com.anytypeio.anytype.di.feature.home.HomeScreenDependencies
 import com.anytypeio.anytype.di.feature.membership.MembershipComponentDependencies
@@ -144,7 +140,6 @@ interface MainComponent :
     SearchV2Dependencies,
     VaultComponentDependencies,
     AllContentDependencies,
-    ChatComponentDependencies,
     DiscussionComponentDependencies,
     SelectWidgetSourceDependencies,
     SelectWidgetTypeDependencies,
@@ -152,9 +147,6 @@ interface MainComponent :
     MoveToDependencies,
     DateObjectDependencies,
     ObjectTypeDependencies,
-    SelectChatReactionDependencies,
-    SelectChatIconDependencies,
-    ChatReactionDependencies,
     ParticipantComponentDependencies,
     EditTypePropertiesDependencies,
     DebugDependencies,
@@ -358,8 +350,6 @@ abstract class ComponentDependenciesModule {
 
     @Binds
     @IntoMap
-    @ComponentDependenciesKey(ChatComponentDependencies::class)
-    abstract fun provideChatComponentDependencies(component: MainComponent): ComponentDependencies
 
     @Binds
     @IntoMap
@@ -408,18 +398,13 @@ abstract class ComponentDependenciesModule {
 
     @Binds
     @IntoMap
-    @ComponentDependenciesKey(SelectChatReactionDependencies::class)
     abstract fun provideChatReactionPickerDependencies(component: MainComponent): ComponentDependencies
 
     @Binds
     @IntoMap
-    @ComponentDependenciesKey(SelectChatIconDependencies::class)
-    abstract fun provideSelectChatIconDependencies(component: MainComponent): ComponentDependencies
 
     @Binds
     @IntoMap
-    @ComponentDependenciesKey(ChatReactionDependencies::class)
-    abstract fun provideChatReactionDependencies(component: MainComponent): ComponentDependencies
 
     @Binds
     @IntoMap

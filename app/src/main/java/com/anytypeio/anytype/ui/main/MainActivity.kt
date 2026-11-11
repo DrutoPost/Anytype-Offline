@@ -83,7 +83,6 @@ import com.anytypeio.anytype.presentation.sharing.IntentToSharedContentConverter
 import com.anytypeio.anytype.presentation.sharing.SharedContent
 import com.anytypeio.anytype.presentation.sharing.SharingCommand
 import com.anytypeio.anytype.presentation.sharing.SharingViewModel
-import com.anytypeio.anytype.ui.chats.ChatFragment
 import com.anytypeio.anytype.ui.date.DateObjectFragment
 import com.anytypeio.anytype.ui.editor.CreateObjectFragment
 import com.anytypeio.anytype.ui.editor.EditorFragment
@@ -274,7 +273,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), AppNavigation.Pr
                                         )
                                     }
                                     controller.navigate(
-                                        R.id.chatScreen,
+                                        R.id.homeScreen,
                                         ChatFragment.args(
                                             space = command.space,
                                             ctx = command.chat,
@@ -917,7 +916,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), AppNavigation.Pr
     private fun isChatFragmentVisible(chatId: String): Boolean {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as? NavHostFragment
         val currentFragment = navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
-        return if (currentFragment is ChatFragment) {
+        return if (false) {
             currentFragment.ctx == chatId
         } else {
             false

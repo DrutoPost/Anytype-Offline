@@ -28,7 +28,6 @@ import com.anytypeio.anytype.core_utils.ui.BaseBottomSheetComposeFragment
 import com.anytypeio.anytype.di.common.componentManager
 import com.anytypeio.anytype.presentation.search.GlobalSearchViewModel
 import com.anytypeio.anytype.ui.base.navigation
-import com.anytypeio.anytype.ui.chats.ChatFragment
 import com.anytypeio.anytype.ui.date.DateObjectFragment
 import com.anytypeio.anytype.ui.editor.EditorFragment
 import com.anytypeio.anytype.ui.media.MediaActivity
@@ -168,7 +167,7 @@ class GlobalSearchFragment : BaseBottomSheetComposeFragment() {
                         }
                         is OpenObjectNavigation.OpenChat -> {
                             findNavController().navigate(
-                                R.id.chatScreen,
+                                R.id.homeScreen,
                                 ChatFragment.args(
                                     ctx = nav.target,
                                     space = nav.space,

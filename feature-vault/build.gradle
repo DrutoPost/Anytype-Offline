@@ -25,7 +25,6 @@ dependencies {
     implementation project(':localization')
     implementation project(':analytics')
     implementation project(':library-emojifier')
-    implementation project(':feature-chats')
 
     // DI - javax.inject for constructor injection annotations
     compileOnly libs.javaxInject

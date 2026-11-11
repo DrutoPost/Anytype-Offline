@@ -29,7 +29,6 @@ import com.anytypeio.anytype.ext.FragmentResultContract
 import com.anytypeio.anytype.feature_search.presentation.SearchNavigation
 import com.anytypeio.anytype.feature_search.presentation.SearchViewModel
 import com.anytypeio.anytype.feature_search.ui.SearchScreen
-import com.anytypeio.anytype.ui.chats.ChatFragment
 import com.anytypeio.anytype.ui.date.DateObjectFragment
 import com.anytypeio.anytype.ui.discussions.DiscussionFragment
 import com.anytypeio.anytype.ui.editor.EditorFragment
@@ -128,7 +127,7 @@ class SearchV2Fragment : BaseComposeFragment() {
             is SearchNavigation.OpenChatAtMessage -> {
                 runCatching {
                     findNavController().navigate(
-                        R.id.chatScreen,
+                        R.id.homeScreen,
                         ChatFragment.args(
                             space = command.space,
                             ctx = command.chat,
@@ -221,7 +220,7 @@ class SearchV2Fragment : BaseComposeFragment() {
             is OpenObjectNavigation.OpenChat -> {
                 runCatching {
                     findNavController().navigate(
-                        R.id.chatScreen,
+                        R.id.homeScreen,
                         ChatFragment.args(
                             ctx = nav.target,
                             space = nav.space,

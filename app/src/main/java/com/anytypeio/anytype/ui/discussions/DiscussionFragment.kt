@@ -26,8 +26,6 @@ import com.anytypeio.anytype.di.common.componentManager
 import com.anytypeio.anytype.feature_discussions.presentation.DiscussionViewModel
 import com.anytypeio.anytype.feature_discussions.presentation.DiscussionViewModelFactory
 import com.anytypeio.anytype.feature_discussions.ui.DiscussionScreenWrapper
-import com.anytypeio.anytype.ui.chats.ChatFragment
-import com.anytypeio.anytype.ui.chats.SelectChatReactionFragment
 import com.anytypeio.anytype.ui.editor.EditorFragment
 import com.anytypeio.anytype.ui.media.MediaActivity
 import com.anytypeio.anytype.ui.primitives.ObjectTypeFragment
@@ -159,7 +157,7 @@ class DiscussionFragment : Fragment() {
                     is OpenObjectNavigation.OpenChat -> {
                         runCatching {
                             findNavController().navigate(
-                                R.id.chatScreen,
+                                R.id.homeScreen,
                                 ChatFragment.args(
                                     space = nav.space,
                                     ctx = nav.target
