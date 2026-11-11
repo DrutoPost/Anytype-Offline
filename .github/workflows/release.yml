@@ -32,13 +32,6 @@ jobs:
       - name: Grant Gradle execution permission
         run: chmod +x gradlew
 
-      - name: Download anytype-heart middleware
-        run: |
-          mkdir -p libs
-          curl -L -o /tmp/android_lib.tar.gz "https://github.com/anyproto/anytype-heart/releases/download/v0.51.6/android_lib_v0.51.6.tar.gz"
-          tar -xzf /tmp/android_lib.tar.gz -C libs/ lib.aar
-          ./gradlew libs:publishToMavenLocal
-
       - name: Create properties files
         run: |
           echo "gpr.usr=ci" > github.properties
@@ -46,6 +39,13 @@ jobs:
           echo "amplitude.debug=\"ci\"" > apikeys.properties
           echo "amplitude.release=\"ci\"" >> apikeys.properties
           echo "sentry_dsn=\"ci\"" >> apikeys.properties
+
+      - name: Download anytype-heart middleware
+        run: |
+          mkdir -p libs
+          curl -L -o /tmp/android_lib.tar.gz "https://github.com/anyproto/anytype-heart/releases/download/v0.51.6/android_lib_v0.51.6.tar.gz"
+          tar -xzf /tmp/android_lib.tar.gz -C libs/ lib.aar
+          ./gradlew libs:publishToMavenLocal
 
       - name: Build Release APK
         run: ./gradlew :app:assembleRelease

@@ -57,7 +57,9 @@ apply from: "$rootDir/versioning.gradle"
 
 def apikeyPropertiesFile = rootProject.file("apikeys.properties")
 def apikeyProperties = new Properties()
-apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+if (apikeyPropertiesFile.exists()) {
+    apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+}
 
 def useReleaseKeystore = rootProject.file("scripts/release/app-release.jks").exists()
 
@@ -132,7 +134,7 @@ android {
             debuggable false
             buildConfigField "boolean", "SHOW_CHATS", "false"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "AMPLITUDE_KEY", apikeyProperties['amplitude.release'])
+            buildConfigField("String", "AMPLITUDE_KEY", apikeyProperties['amplitude.release'] ?: '""')
             signingConfig signingConfigs.release
         }
 
@@ -140,7 +142,7 @@ android {
             applicationIdSuffix ".dev"
             debuggable true
             buildConfigField "boolean", "SHOW_CHATS", "false"
-            buildConfigField("String", "AMPLITUDE_KEY", apikeyProperties['amplitude.debug'])
+            buildConfigField("String", "AMPLITUDE_KEY", apikeyProperties['amplitude.debug'] ?: '""')
             //signingConfig signingConfigs.debug
             firebaseAppDistribution {
                 artifactType = "AAB"
